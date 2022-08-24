@@ -24,6 +24,7 @@ interface FloatingWhatsAppProps {
   notification?: boolean
   notificationDelay?: number
   notificationSound?: boolean
+  callbackOpen?: Function
 }
 
 type State = {
@@ -92,7 +93,8 @@ export default function FloatingWhatsApp({
   placeholder = 'Type a message..',
   notification = false,
   notificationDelay = 180000, // 3 minutes
-  notificationSound = false
+  notificationSound = false,
+  callbackOpen = ()=>{}
 }: FloatingWhatsAppProps) {
   const [{ isOpen, isDelay, isNotification, message }, dispatch] = useReducer(reducer, {
     isOpen: false,
@@ -108,6 +110,7 @@ export default function FloatingWhatsApp({
   const time = useMemo(() => new Date().toTimeString().split(`:`).slice(0, 2).join(`:`), [])
 
   const handleOpen = (event: React.MouseEvent<HTMLDivElement>) => {
+    callbackOpen()
     event.stopPropagation()
     if (isOpen) return
 
