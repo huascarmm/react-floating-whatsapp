@@ -60,6 +60,9 @@
   "files": [
     "dist"
   ],
+  "precommit": [
+    "build"
+  ],
   "publishConfig": {
     "access": "public"
   },
