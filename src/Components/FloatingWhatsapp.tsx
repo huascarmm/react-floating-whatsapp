@@ -25,6 +25,7 @@ interface FloatingWhatsAppProps {
   notificationDelay?: number
   notificationSound?: boolean
   callbackOpen?: Function
+  callbackMessage?: Function
 }
 
 type State = {
@@ -83,7 +84,7 @@ export default function FloatingWhatsApp({
   height = 320,
   avatar = dummyAvatar,
   statusMessage = 'Typically replies within 1 hour',
-  defaultMessage = "Hi, I have a query",
+  defaultMessage = 'Hi, I have a query',
   chatMessage = 'Hello there! 🤝 \nHow can we help?',
   darkMode = false,
   allowClickAway = false,
@@ -94,7 +95,8 @@ export default function FloatingWhatsApp({
   notification = false,
   notificationDelay = 180000, // 3 minutes
   notificationSound = false,
-  callbackOpen = ()=>{}
+  callbackOpen = () => {},
+  callbackMessage = () => {}
 }: FloatingWhatsAppProps) {
   const [{ isOpen, isDelay, isNotification, message }, dispatch] = useReducer(reducer, {
     isOpen: false,
@@ -126,6 +128,7 @@ export default function FloatingWhatsApp({
   }
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    callbackMessage()
     event.preventDefault()
     if (!message) return
 
@@ -236,7 +239,7 @@ export default function FloatingWhatsApp({
               value={message}
               dir='auto'
             />
-            <button type='submit' className={css.buttonSend} disabled={message === ''} aria-label="send">
+            <button type='submit' className={css.buttonSend} disabled={message === ''} aria-label='send'>
               <SendSVG />
             </button>
           </form>
