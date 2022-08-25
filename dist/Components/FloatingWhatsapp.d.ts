@@ -17,7 +17,8 @@ interface FloatingWhatsAppProps {
     notificationDelay?: number;
     notificationSound?: boolean;
     callbackOpen?: Function;
+    callbackMessage?: Function;
 }
 export default function FloatingWhatsApp({ phoneNumber, accountName, height, avatar, statusMessage, defaultMessage, chatMessage, darkMode, allowClickAway, allowEsc, styles, className, placeholder, notification, notificationDelay, // 3 minutes
-notificationSound, callbackOpen }: FloatingWhatsAppProps): JSX.Element;
+notificationSound, callbackOpen, callbackMessage }: FloatingWhatsAppProps): JSX.Element;
 export {};
