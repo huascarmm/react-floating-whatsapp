@@ -112,8 +112,8 @@ export default function FloatingWhatsApp({
   const time = useMemo(() => new Date().toTimeString().split(`:`).slice(0, 2).join(`:`), [])
 
   const handleOpen = (event: React.MouseEvent<HTMLDivElement>) => {
-    callbackOpen()
     event.stopPropagation()
+    callbackOpen()
     if (isOpen) return
 
     dispatch({ type: 'open' })
@@ -131,7 +131,6 @@ export default function FloatingWhatsApp({
     callbackMessage()
     event.preventDefault()
     if (!message) return
-
     window.open(`https://api.whatsapp.com/send/?phone=${phoneNumber}&text=${message}`)
     dispatch({ type: 'message', payload: '' })
   }
