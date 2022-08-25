@@ -59,6 +59,7 @@
   opacity: 0;
   transition: height 0.2s ease-out;
   box-shadow: 0 4px 12px 0 rgb(0 0 0 / 50%);
+  z-index: 5;
 }
 
 .whatsappChatBox.open {
