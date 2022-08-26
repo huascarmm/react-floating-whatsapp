@@ -18,8 +18,8 @@
   background-color: #25d366;
   border-radius: 50%;
   user-select: none;
-  box-shadow: rgb(0 0 0 / 15%) 0px 4px 12px 0px;
   z-index: 5;
+  box-shadow: rgb(0 0 0 / 15%) 0px 4px 12px 0px;
 }
 
 .whatsappButton:after {
